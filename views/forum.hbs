@@ -1,0 +1,21 @@
+<h1>Bienvenido al foro, {{user.name}}</h1>
+
+{{#if success_msg}}
+  <div class="alert alert-success">{{success_msg}}</div>
+{{/if}}
+
+{{#if error_msg}}
+  <div class="alert alert-danger">{{error_msg}}</div>
+{{/if}}
+
+<h2>Publicaciones</h2>
+{{#each posts}}
+  <div>
+    <h3>{{this.title}}</h3>
+    <p>{{this.content}}</p>
+    <p>Creado por: {{this.user.name}}</p>
+    {{#ifCond this.user.id ../user.id}}
+      <a href="/forum/delete/{{this.id}}">Borrar publicación</a>
+    {{/ifCond}}
+  </div>
+{{/each}}
