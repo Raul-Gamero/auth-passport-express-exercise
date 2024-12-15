@@ -1,21 +1,61 @@
-<h1>Bienvenido al foro, {{user.name}}</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <header>
+        <h1>{{title}}</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
 
-{{#if success_msg}}
-  <div class="alert alert-success">{{success_msg}}</div>
-{{/if}}
+    <main>
+        {{#if posts.length}}
+            <h2>Publicaciones</h2>
+            <ul>
+                {{#each posts}}
+                    <li>
+                        <h3>{{this.title}}</h3>
+                        <p>{{this.content}}</p>
+                        <p><small>Por {{this.user.name}}</small></p>
 
-{{#if error_msg}}
-  <div class="alert alert-danger">{{error_msg}}</div>
-{{/if}}
+                        <!-- Solo mostrar el botón de eliminar si el usuario es el autor de la publicación -->
+                        {{#ifCond this.userId ../user.id}}
+                            <a href="/forum/delete/{{this.id}}" class="delete-button">Eliminar</a>
+                        {{/ifCond}}
+                    </li>
+                {{/each}}
+            </ul>
+        {{else}}
+            <p>No hay publicaciones en este momento. ¡Sé el primero en publicar!</p>
+        {{/if}}
 
-<h2>Publicaciones</h2>
-{{#each posts}}
-  <div>
-    <h3>{{this.title}}</h3>
-    <p>{{this.content}}</p>
-    <p>Creado por: {{this.user.name}}</p>
-    {{#ifCond this.user.id ../user.id}}
-      <a href="/forum/delete/{{this.id}}">Borrar publicación</a>
-    {{/ifCond}}
-  </div>
-{{/each}}
+        <h2>Crea una nueva publicación</h2>
+        <form action="/forum/create" method="POST">
+            <div>
+                <label for="title">Título:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div>
+                <label for="content">Contenido:</label>
+                <textarea id="content" name="content" rows="4" required></textarea>
+            </div>
+            <button type="submit">Crear publicación</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Foro. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Mi sitio web</p>
+    </footer>
+
+</body>
+</html>
+

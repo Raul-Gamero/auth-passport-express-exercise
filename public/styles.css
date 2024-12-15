@@ -1,0 +1,73 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header styles */
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+header a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+/* Main content styles */
+main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Error message */
+.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 1rem;
+}

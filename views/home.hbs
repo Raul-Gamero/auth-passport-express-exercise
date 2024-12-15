@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Application</h1>
+        {{#if user}}
+            <p>Hello, {{user.name}}!</p>
+            <a href="/logout">Logout</a>
+        {{else}}
+            <a href="/login">Login</a> | 
+            <a href="/register">Register</a>
+        {{/if}}
+    </header>
+    <main>
+        <h2>Home Page</h2>
+        <p>This is the main page of our app. Feel free to explore!</p>
+    </main>
+</body>
+</html>
