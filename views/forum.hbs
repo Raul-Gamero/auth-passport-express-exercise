@@ -27,9 +27,15 @@
                         <p><small>Por {{this.user.name}}</small></p>
 
                         <!-- Solo mostrar el botón de eliminar si el usuario es el autor de la publicación -->
-                        {{#ifCond this.userId ../user.id}}
+                        {{#ifCond this.userId ../user.id}} 
                             <a href="/forum/delete/{{this.id}}" class="delete-button">Eliminar</a>
                         {{/ifCond}}
+                        <!-- Fin de la condición -->
+                      
+                        <form action="/forum/delete/{{this.id}}?_method=DELETE" method="post">
+                        <button type="submit">Delete</button>
+                        </form>
+                      
                     </li>
                 {{/each}}
             </ul>
@@ -58,4 +64,3 @@
 
 </body>
 </html>
-

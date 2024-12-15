@@ -7,9 +7,13 @@ const router = express.Router();
 
 // Mostrar todas las publicaciones
 router.get('/', ensureAuthenticated, async (req, res) => {
+  console.log(req.user)
   const posts = await prisma.post.findMany({ include: { user: true } });
   res.render('forum', { posts });
 });
+
+
+
 
 // Crear nueva publicación
 router.post('/create', ensureAuthenticated, async (req, res) => {
