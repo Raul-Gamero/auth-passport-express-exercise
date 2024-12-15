@@ -1,15 +1,18 @@
 const express = require('express');
+const PORT = process.env.PORT || 3000;
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
 const dotenv = require('dotenv');
 const path = require('path');
-const exphbs = require('express-handlebars');
+
+const {engine} = require('express-handlebars');
 
 dotenv.config();
 const app = express();
 
-app.engine('hbs', exphbs({ extname: '.hbs' }));
+app.engine('hbs', engine({ extname: '.hbs' }));
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -40,7 +43,9 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/authRoutes'));
 app.use('/forum', require('./routes/forumRoutes'));
 
-const PORT = process.env.PORT || 3000;
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
